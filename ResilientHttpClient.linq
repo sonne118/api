@@ -1,27 +1,3 @@
-<Query Kind="Program">
-  <Output>DataGrids</Output>
-  <NuGetReference>Microsoft.Extensions.Http.Polly</NuGetReference>
-  <NuGetReference>Polly</NuGetReference>
-  <NuGetReference>Polly.Caching.Distributed</NuGetReference>
-  <NuGetReference>Polly.Caching.Memory</NuGetReference>
-  <NuGetReference>Polly.Caching.Serialization.Json</NuGetReference>
-  <NuGetReference>Polly.Contrib.WaitAndRetry</NuGetReference>
-  <NuGetReference>Polly.Extensions.Http</NuGetReference>
-  <NuGetReference>Polly-Signed</NuGetReference>
-  <Namespace>Microsoft.AspNetCore.Http</Namespace>
-  <Namespace>Microsoft.Extensions.Logging</Namespace>
-  <Namespace>Newtonsoft.Json</Namespace>
-  <Namespace>Polly</Namespace>
-  <Namespace>Polly.CircuitBreaker</Namespace>
-  <Namespace>Polly.Fallback</Namespace>
-  <Namespace>Polly.Timeout</Namespace>
-  <Namespace>Polly.Wrap</Namespace>
-  <Namespace>System.Collections.Concurrent</Namespace>
-  <Namespace>System.Net</Namespace>
-  <Namespace>System.Net.Http</Namespace>
-  <Namespace>System.Net.Http.Headers</Namespace>
-  <Namespace>System.Threading.Tasks</Namespace>
-</Query>
 
 namespace UserRegService.Resilient
 {
