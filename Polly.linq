@@ -1,0 +1,132 @@
+<Query Kind="Program">
+  <Output>DataGrids</Output>
+  <NuGetReference>HealthCheckVersion</NuGetReference>
+  <NuGetReference>Polly</NuGetReference>
+  <NuGetReference>Polly.Caching.Distributed</NuGetReference>
+  <NuGetReference>Polly.Caching.Memory</NuGetReference>
+  <NuGetReference>Polly.Caching.Serialization.Json</NuGetReference>
+  <NuGetReference>Polly.Contrib.WaitAndRetry</NuGetReference>
+  <NuGetReference>Polly.Extensions.Http</NuGetReference>
+  <NuGetReference>Polly-Signed</NuGetReference>
+  <Namespace>Microsoft.AspNetCore.Builder</Namespace>
+  <Namespace>Microsoft.AspNetCore.Hosting</Namespace>
+  <Namespace>Microsoft.Extensions.Caching.Memory</Namespace>
+  <Namespace>Microsoft.Extensions.Configuration</Namespace>
+  <Namespace>Microsoft.Extensions.DependencyInjection</Namespace>
+  <Namespace>Microsoft.Extensions.HealthChecks</Namespace>
+  <Namespace>Microsoft.Extensions.Logging</Namespace>
+  <Namespace>Microsoft.Extensions.Options</Namespace>
+  <Namespace>Polly</Namespace>
+  <Namespace>Polly.Caching</Namespace>
+  <Namespace>Polly.Caching.MemoryCache</Namespace>
+  <Namespace>Polly.CircuitBreaker</Namespace>
+  <Namespace>Polly.Registry</Namespace>
+  <Namespace>Swashbuckle.AspNetCore.Swagger</Namespace>
+  <Namespace>System.Net.Http</Namespace>
+  <Namespace>System.Threading.Tasks</Namespace>
+  <Namespace>UserRegService.Resilient</Namespace>
+</Query>
+
+void Main()
+{
+}
+
+namespace Chapter8
+{
+	public class Startup
+	{
+
+		private IPolicyRegistry<string> _registry;
+
+		public Startup(IConfiguration configuration)
+		{
+			Configuration = configuration;
+		}
+
+		public IConfiguration Configuration { get; }
+
+		// This method gets called by the runtime. Use this method to add services to the container.
+		public void ConfigureServices(IServiceCollection services)
+		{
+
+
+			_registry = new PolicyRegistry();
+
+			var circuitBreakerPolicy = Policy.HandleResult<HttpResponseMessage>(x =>
+			{
+				var result = !x.IsSuccessStatusCode;
+				return result;
+			})
+			.CircuitBreaker(3, TimeSpan.FromSeconds(60), OnBreak, OnReset, OnHalfOpen);
+			// .AdvancedCircuitBreaker(0.1, TimeSpan.FromSeconds(60),5, TimeSpan.FromSeconds(10), OnBreak, OnReset, OnHalfOpen);
+
+
+			//working
+			//var circuitBreakerPolicy = Policy.Handle<AggregateException>(x =>
+			//{
+			//    var result = x.InnerException is HttpRequestException;
+			//    System.Console.WriteLine("Circuit opened...");
+			//    return result;
+			//})
+			//.CircuitBreaker(exceptionsAllowedBeforeBreaking: 3, durationOfBreak: TimeSpan.FromSeconds(50));
+
+			services.AddHealthChecks(checks =>
+			{
+				checks.AddValueTaskCheck("HTTP Endpoint", () => new
+					ValueTask<IHealthCheckResult>(HealthCheckResult.Healthy("Ok")));
+			});
+
+			services.AddSingleton<HttpClient>();
+
+			services.AddSingleton(_registry);
+			services.AddSingleton<CircuitBreakerPolicy<HttpResponseMessage>>(circuitBreakerPolicy);
+
+			//working
+			//services.AddSingleton<CircuitBreakerPolicy>(circuitBreakerPolicy);
+			services.AddSingleton<IResilientHttpClient, ResilientHttpClient>();
+			services.AddMvc();
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new Info { Title = "User Service", Version = "v1" });
+			});
+		}
+
+		private void OnBreak(DelegateResult<HttpResponseMessage> arg1, TimeSpan arg2)
+		{
+			//Log to file system
+		}
+		private void OnReset()
+		{
+			//log to file system
+		}
+		private void OnHalfOpen()
+		{
+			// log to file system
+		}
+
+		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMemoryCache memoryCache)
+		{
+			if (env.IsDevelopment())
+			{
+				app.UseDeveloperExceptionPage();
+			}
+
+			Polly.Caching.MemoryCache.MemoryCacheProvider memoryCacheProvider = new MemoryCacheProvider(memoryCache);
+
+			CachePolicy<HttpResponseMessage> cachePolicy = Policy.Cache<HttpResponseMessage>(memoryCacheProvider, TimeSpan.FromMinutes(10));
+
+			_registry.Add("cache", cachePolicy);
+
+			app.UseSwagger();
+
+			// Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "User API V1");
+			});
+
+			app.UseMvcWithDefaultRoute();
+		}
+	}
+}
