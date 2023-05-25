@@ -1,38 +1,4 @@
-<Query Kind="Program">
-  <Output>DataGrids</Output>
-  <NuGetReference>HealthCheckVersion</NuGetReference>
-  <NuGetReference>Polly</NuGetReference>
-  <NuGetReference>Polly.Caching.Distributed</NuGetReference>
-  <NuGetReference>Polly.Caching.Memory</NuGetReference>
-  <NuGetReference>Polly.Caching.Serialization.Json</NuGetReference>
-  <NuGetReference>Polly.Contrib.WaitAndRetry</NuGetReference>
-  <NuGetReference>Polly.Extensions.Http</NuGetReference>
-  <NuGetReference>Polly-Signed</NuGetReference>
-  <Namespace>Microsoft.AspNetCore.Builder</Namespace>
-  <Namespace>Microsoft.AspNetCore.Hosting</Namespace>
-  <Namespace>Microsoft.Extensions.Caching.Memory</Namespace>
-  <Namespace>Microsoft.Extensions.Configuration</Namespace>
-  <Namespace>Microsoft.Extensions.DependencyInjection</Namespace>
-  <Namespace>Microsoft.Extensions.HealthChecks</Namespace>
-  <Namespace>Microsoft.Extensions.Logging</Namespace>
-  <Namespace>Microsoft.Extensions.Options</Namespace>
-  <Namespace>Polly</Namespace>
-  <Namespace>Polly.Caching</Namespace>
-  <Namespace>Polly.Caching.MemoryCache</Namespace>
-  <Namespace>Polly.CircuitBreaker</Namespace>
-  <Namespace>Polly.Registry</Namespace>
-  <Namespace>Swashbuckle.AspNetCore.Swagger</Namespace>
-  <Namespace>System.Net.Http</Namespace>
-  <Namespace>System.Threading.Tasks</Namespace>
-  <Namespace>UserRegService.Resilient</Namespace>
-</Query>
 
-void Main()
-{
-}
-
-namespace Chapter8
-{
 	public class Startup
 	{
 
@@ -129,4 +95,4 @@ namespace Chapter8
 			app.UseMvcWithDefaultRoute();
 		}
 	}
-}
+
