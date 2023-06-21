@@ -10,12 +10,18 @@
   <NuGetReference>Microsoft.Extensions.Configuration</NuGetReference>
   <NuGetReference>Microsoft.Extensions.DependencyInjection</NuGetReference>
   <NuGetReference>Microsoft.Extensions.Http.Polly</NuGetReference>
+  <NuGetReference>Microsoft.NETCore.App</NuGetReference>
   <NuGetReference>NUnitLite</NuGetReference>
   <NuGetReference>System.Threading.Tasks.Dataflow</NuGetReference>
   <Namespace>Microsoft.AspNetCore.Builder</Namespace>
   <Namespace>Microsoft.Extensions.Hosting</Namespace>
   <Namespace>Microsoft.Extensions.Logging</Namespace>
+  <Namespace>System.Net.Http</Namespace>
   <Namespace>System.Threading.Tasks</Namespace>
+  <Namespace>Microsoft.Extensions.DependencyInjection</Namespace>
+  <Namespace>Microsoft.AspNetCore.Http</Namespace>
+  <IncludeAspNet>true</IncludeAspNet>
+  <RuntimeVersion>6.0</RuntimeVersion>
 </Query>
 
 var builder = WebApplication.CreateBuilder();
