@@ -1,11 +1,4 @@
-<Query Kind="Program">
-  <Output>DataGrids</Output>
-  <NuGetReference>Microsoft.Extensions.Configuration</NuGetReference>
-  <NuGetReference>Microsoft.Extensions.DependencyInjection</NuGetReference>
-  <NuGetReference>Microsoft.Extensions.DependencyInjection.Abstractions</NuGetReference>
-  <NuGetReference>Microsoft.Extensions.Options</NuGetReference>
-  <Namespace>Microsoft.Extensions.DependencyInjection</Namespace>
-</Query>
+
 
 void Main()
 {
