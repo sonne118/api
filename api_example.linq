@@ -1,36 +1,3 @@
-<Query Kind="Program">
-  <Output>DataGrids</Output>
-  <NuGetReference>App.Metrics.AspNetCore</NuGetReference>
-  <NuGetReference>App.Metrics.AspNetCore.Core</NuGetReference>
-  <NuGetReference>Microsoft.AspNetCore.Http</NuGetReference>
-  <NuGetReference>Microsoft.AspNetCore.Http.Features</NuGetReference>
-  <NuGetReference>Microsoft.AspNetCore.Mvc</NuGetReference>
-  <NuGetReference>Microsoft.EntityFrameworkCore</NuGetReference>
-  <NuGetReference>Microsoft.EntityFrameworkCore.Abstractions</NuGetReference>
-  <NuGetReference>Microsoft.EntityFrameworkCore.InMemory</NuGetReference>
-  <NuGetReference>Microsoft.EntityFrameworkCore.Relational</NuGetReference>
-  <NuGetReference>Microsoft.EntityFrameworkCore.Sqlite.Core</NuGetReference>
-  <NuGetReference>Microsoft.Extensions.Configuration</NuGetReference>
-  <NuGetReference>Microsoft.Extensions.DependencyInjection</NuGetReference>
-  <NuGetReference>Microsoft.Extensions.Http.Polly</NuGetReference>
-  <NuGetReference>NUnitLite</NuGetReference>
-  <NuGetReference>Swashbuckle</NuGetReference>
-  <NuGetReference>Swashbuckle.AspNetCore</NuGetReference>
-  <NuGetReference>Swashbuckle.AspNetCore.Swagger</NuGetReference>
-  <NuGetReference>System.Threading.Tasks.Dataflow</NuGetReference>
-  <Namespace>LINQPad.ObjectModel</Namespace>
-  <Namespace>Microsoft.AspNetCore.Builder</Namespace>
-  <Namespace>Microsoft.AspNetCore.Http</Namespace>
-  <Namespace>Microsoft.EntityFrameworkCore</Namespace>
-  <Namespace>Microsoft.Extensions.DependencyInjection</Namespace>
-  <Namespace>Microsoft.Extensions.Hosting</Namespace>
-  <Namespace>Microsoft.Extensions.Logging</Namespace>
-  <Namespace>Microsoft.OpenApi.Models</Namespace>
-  <Namespace>System.Threading.Tasks</Namespace>
-  <IncludeAspNet>true</IncludeAspNet>
-</Query>
-
-
 
 void Main()
 {
