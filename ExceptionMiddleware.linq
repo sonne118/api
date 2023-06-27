@@ -1,16 +1,3 @@
-<Query Kind="Program">
-  <Output>DataGrids</Output>
-  <NuGetReference>Humanizer</NuGetReference>
-  <NuGetReference>Microsoft.AspNetCore.Http</NuGetReference>
-  <NuGetReference>Microsoft.Extensions.Logging.ApplicationInsights</NuGetReference>
-  <Namespace>Humanizer</Namespace>
-  <Namespace>Microsoft.AspNetCore.Http</Namespace>
-  <Namespace>Microsoft.Extensions.Logging</Namespace>
-  <Namespace>MySpot.Core.Exceptions</Namespace>
-  <Namespace>System.Threading.Tasks</Namespace>
-  <IncludeAspNet>true</IncludeAspNet>
-</Query>
-
 
  //app.UseMiddleware<ExceptionMiddleware>();
 
