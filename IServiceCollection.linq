@@ -1,10 +1,5 @@
 
 
-void Main()
-{
-	
-}
-
 static IServiceCollection AddPostgres(this IServiceCollection services, IConfiguration configuration)
 {
 	services.Configure<PostgresOptions>(configuration.GetRequiredSection(OptionsSectionName));
