@@ -1,37 +1,3 @@
-<Query Kind="Statements">
-  <Output>DataGrids</Output>
-  <NuGetReference>App.Metrics.AspNetCore</NuGetReference>
-  <NuGetReference>App.Metrics.AspNetCore.Core</NuGetReference>
-  <NuGetReference>Microsoft.AspNetCore.Http</NuGetReference>
-  <NuGetReference>Microsoft.AspNetCore.Http.Features</NuGetReference>
-  <NuGetReference>Microsoft.AspNetCore.Mvc</NuGetReference>
-  <NuGetReference>Microsoft.EntityFrameworkCore</NuGetReference>
-  <NuGetReference>Microsoft.Extensions.Configuration</NuGetReference>
-  <NuGetReference>Microsoft.Extensions.DependencyInjection</NuGetReference>
-  <NuGetReference>Microsoft.Extensions.Http.Polly</NuGetReference>
-  <NuGetReference>NUnitLite</NuGetReference>
-  <NuGetReference>Swashbuckle.AspNetCore</NuGetReference>
-  <NuGetReference>Swashbuckle.AspNetCore.SwaggerGen</NuGetReference>
-  <NuGetReference>Swashbuckle.AspNetCore.SwaggerUI</NuGetReference>
-  <NuGetReference>System.Threading.Tasks.Dataflow</NuGetReference>
-  <Namespace>Microsoft.AspNetCore.Builder</Namespace>
-  <Namespace>Microsoft.AspNetCore.Builder.Extensions</Namespace>
-  <Namespace>Microsoft.AspNetCore.Http</Namespace>
-  <Namespace>Microsoft.AspNetCore.Http.Features</Namespace>
-  <Namespace>Microsoft.AspNetCore.Http.Features.Authentication</Namespace>
-  <Namespace>Microsoft.AspNetCore.WebUtilities</Namespace>
-  <Namespace>Microsoft.Extensions.DependencyInjection</Namespace>
-  <Namespace>Microsoft.Extensions.DependencyInjection.Extensions</Namespace>
-  <Namespace>Microsoft.Extensions.Hosting</Namespace>
-  <Namespace>Microsoft.Extensions.Logging</Namespace>
-  <Namespace>Microsoft.Extensions.ObjectPool</Namespace>
-  <Namespace>Microsoft.Extensions.Options</Namespace>
-  <Namespace>Microsoft.Extensions.Primitives</Namespace>
-  <Namespace>Microsoft.Net.Http.Headers</Namespace>
-  <Namespace>System.Threading.Tasks</Namespace>
-  <IncludeAspNet>true</IncludeAspNet>
-  <RuntimeVersion>6.0</RuntimeVersion>
-</Query>
 
 var builder = WebApplication.CreateBuilder();
 builder.Services.AddSingleton<Greeter>();
